@@ -1,28 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Routes from "./Routes/Routes";
+import {Navbar,NavbarToggler,NavbarBrand } from 'reactstrap';
 
-class App extends Component {
-  render() {
+export default class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false,
+      isAuthenticated: false
+    };
+  }
+  userHasAuthenticated = authenticated => {
+    this.setState({ isAuthenticated: authenticated });
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+}
+render() {
+    const childProps = {
+        isAuthenticated: this.state.isAuthenticated,
+        userHasAuthenticated: this.userHasAuthenticated
+    };
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <div className="App">
+            <Navbar color="light" light expand="md">
+            <NavbarBrand href="/">3DGenerationX</NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            </Navbar>
+            <Routes childProps={childProps} />
+        </div>
     );
   }
 }
-
-export default App;

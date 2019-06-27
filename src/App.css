@@ -1,7 +1,9 @@
 .App {
   text-align: center;
 }
-
+.App .navbar-brand {
+  font-weight: bold;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -31,3 +33,30 @@
     transform: rotate(360deg);
   }
 }
+/*
+
+=====================
+NAVBAR
+=====================
+*/
+.header {
+  width: 100%;
+  }
+  .navbar {
+    font-weight: 700;
+    box-shadow: 0 1px 5px #666;
+  }
+  @media (min-width: 768px) {
+    .navbar ul.nav > li > a {
+      border-top: solid 5px transparent;
+      padding-top: 23px;
+    }
+    .navbar ul.nav > li > a:hover {
+      border-top-color: #ff7473;
+    }
+    .navbar ul.nav > li.active > a,
+    .navbar ul.nav > li.open > a {
+      text-decoration: none !important;
+      border-top-color: #ff7473;
+    }
+  }
